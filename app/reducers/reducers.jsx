@@ -11,6 +11,21 @@ export var usersReducer = (state={isFetching: false, users: undefined}, action) 
         isFetching: false,
         users: action.users
       };
+      break;
+    case 'EDIT_USER':
+        return {
+          isFetching: false,
+          users:state.users.map((user)=>{
+              if(user.id == action.user.id){
+                return {
+                  ...user,
+                  ...action.user
+                }
+              }
+              return user;
+            })
+          }
+        break;
     default:
       return state;
       break;
