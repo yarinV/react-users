@@ -1,10 +1,11 @@
 const redux = require('redux');
 
-var {usersReducer} = require('reducers');
+var {usersReducer, fetchReducer} = require('reducers');
 
 export var configure = (initialState = {} ) =>{
   var reducer = redux.combineReducers({
-    usersList: usersReducer,
+    api: fetchReducer,
+    users: usersReducer,
   });
 
   return redux.createStore(reducer, initialState);

@@ -6,23 +6,38 @@ export var startUsersFetch = () => {
   }
 };
 
-export var completeUsersFetch = (users) => {
+export var completeUsersFetch = () => {
   return {
-    type: 'COMPLETE_USERS_FETCH',
-    users
+    type: 'COMPLETE_USERS_FETCH'
   }
 };
 
 export var fetchUsers = (dispatch) => {
   dispatch(startUsersFetch());
   UserAPI.getUsers().then((res) => {
-    dispatch(completeUsersFetch(res));
+    dispatch(completeUsersFetch());
+    dispatch(addUsers(res));
   });
 }
+
+export var addUsers = (users = []) => {
+  return {
+    type: 'ADD_USERS',
+    users
+  }
+};
 
 export var editUser = (user = {}) => {
   return {
     type: 'EDIT_USER',
     user
+  }
+};
+
+
+export var deleteUser = (id) => {
+  return {
+    type: 'DELETE_USER',
+    id
   }
 };

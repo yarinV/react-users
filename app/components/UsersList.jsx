@@ -10,10 +10,10 @@ var UsersList = React.createClass({
 		actions.fetchUsers(dispatch)
 	},
 	render(){
-		var that = this
+		var that = this;
 		function renderUsers(){
-			var {users} = that.props;
-			if(users){
+			var {api, users} = that.props;
+			if( typeof users !== "undefined" && users.length > 0){
 				return users.map((user)=>{
 			 		return(
 			 			<User key={user.id} {...user}/>
@@ -25,8 +25,8 @@ var UsersList = React.createClass({
 		return(
         <div>
 	        <h2>Users Component</h2>
-	        <div className="users-list row">
-	        	<div className="columns small-10 small-offset-2">
+	        <div className="users-list">
+	        	<div className="grid-x grid-padding-x column small-8 small-offset-2">
 	        		{renderUsers()}
 	        	</div>
 	        </div>
@@ -36,7 +36,10 @@ var UsersList = React.createClass({
 });
 
 function mapStateToProps(state){
-	return{users: state.usersList.users};
+	return{
+		users: state.users,
+		api: state.api
+	};
 }
 
 module.exports = connect(mapStateToProps)(UsersList);
