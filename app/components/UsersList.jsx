@@ -26,7 +26,7 @@ var UsersList = React.createClass({
         <div>
 	        <h2>Users Component</h2>
 	        <div className="users-list">
-	        	<div className="grid-x grid-padding-x column small-8 small-offset-2">
+	        	<div className="grid-x grid-padding-x column small-10 small-offset-1">
 	        		{renderUsers()}
 	        	</div>
 	        </div>

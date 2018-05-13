@@ -57,7 +57,7 @@ class User extends Component{
 		var {id,name,email,address,phone,website,company} = this.props;
 
 		return (
-			<div className="user cell small-4">
+			<div className="user cell  large-3 large-offset-1 medium-5 medium-offset-1 small-12">
 			  <ul>
 			  	<li className="user-name">{name}</li>
 			  	<li>{email}</li>
@@ -66,7 +66,7 @@ class User extends Component{
 			  	<li>{website}</li>
 			  	<li>{company.name}</li>
 					<button type="button" className="button" onClick={this.openModal}>Edit</button>
-					<button type="button" className="button button-danger" onClick={()=>{this.handleDeleteUser(id)}}>Delete</button>
+					<button type="button" className="button alert" onClick={()=>{this.handleDeleteUser(id)}}>Delete</button>
 			  </ul>
 				<Modal isOpen={this.state.modalIsopen} style={customStyles}>
 					<form className="columns small-8 small-offset-2">
