@@ -22,6 +22,7 @@ class User extends Component{
 		var user = {
 			id: this.refs.id.value,
 			name: this.refs.name.value,
+			email: this.refs.email.value,
 			address:{city: this.refs.city.value},
 			phone: this.refs.phone.value,
 			website: this.refs.website.value,
@@ -71,6 +72,7 @@ class User extends Component{
 				<Modal isOpen={this.state.modalIsopen} style={customStyles}>
 					<form className="columns small-8 small-offset-2">
 						<label>Name: </label><input type="text" ref="name" defaultValue={name}/>
+						<label>Email: </label><input type="text" ref="email" defaultValue={email}/>
 						<label>City: </label><input type="text" ref="city" defaultValue={address.city}/>
 						<label>Phone: </label><input type="text" ref="phone" defaultValue={phone}/>
 						<label>Website: </label><input type="text" ref="website" defaultValue={website}/>
