@@ -34,8 +34,8 @@ class User extends Component{
 	}
 
 	handleDeleteUser(id){
-		var {dispatch} = this.props;
-		dispatch(actions.deleteUser(id));
+		var {users, dispatch} = this.props;
+		actions.deleteUser(users, id, dispatch);
 	}
 
 	render(){
@@ -84,4 +84,11 @@ class User extends Component{
 		);
 	}
 };
-module.exports = connect()(User);
+
+function mapStateToProps(state){
+	return{
+		users: state.users,
+	};
+}
+
+module.exports = connect(mapStateToProps)(User);

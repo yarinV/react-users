@@ -1,24 +1,32 @@
 var UserAPI = require('UserAPI');
 
-export var startUsersFetch = () => {
+export var startApiCall = () => {
   return {
-    type: 'START_USERS_FETCH'
+    type: 'START_API_CALL'
   }
 };
 
-export var completeUsersFetch = () => {
+export var completeApiCall = () => {
   return {
-    type: 'COMPLETE_USERS_FETCH'
+    type: 'COMPLETE_API_CALL'
   }
 };
 
 export var fetchUsers = (dispatch) => {
-  dispatch(startUsersFetch());
+  dispatch(startApiCall());
   UserAPI.getUsers().then((res) => {
-    dispatch(completeUsersFetch());
+    dispatch(completeApiCall());
     dispatch(addUsers(res));
   });
-}
+};
+
+export var deleteUser = (users, id, dispatch) => {
+  dispatch(startApiCall());
+  UserAPI.deleteUser(users, id, (res)=>{
+    dispatch(completeApiCall());
+    dispatch(addUsers(res));
+  })
+};
 
 export var addUsers = (users = []) => {
   return {
@@ -31,13 +39,5 @@ export var editUser = (user = {}) => {
   return {
     type: 'EDIT_USER',
     user
-  }
-};
-
-
-export var deleteUser = (id) => {
-  return {
-    type: 'DELETE_USER',
-    id
   }
 };

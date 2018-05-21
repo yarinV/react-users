@@ -12,6 +12,16 @@ module.exports = {
           console.log('Error on server, couldn\'t get users');
         }
          return $.isArray(users) ? users : [];
-    });
+    }).catch((err)=>{
+      console.log(err);
+    })
+  },
+  deleteUser: function(users ,id, cb){
+    // in real condition this will call deleteUser:id and return the updated users list
+    var updatedUsers = users.filter((user)=> user.id != id);
+    if(typeof cb == "function"){
+      cb(updatedUsers);
+    }
+    
   }
 };
